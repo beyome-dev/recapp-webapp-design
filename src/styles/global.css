@@ -1,0 +1,70 @@
+/* src/styles/global.css */
+/* To change a colour or font: update the value here AND in src/config/theme.js */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Forest Green */
+  --green-900: #1D3D2B;
+  --green-700: #2C5C40;
+  --green-500: #3E8C62;
+  --green-300: #8EC9A8;
+  --green-100: #D4EEDD;
+  --green-50:  #EDF7F1;
+
+  /* Ink — warm neutrals */
+  --ink-900: #1C1A17;
+  --ink-700: #3C3935;
+  --ink-500: #6A6760;
+  --ink-300: #A9A69F;
+  --ink-200: #C9C6BF;
+  --ink-100: #E3E0D9;
+  --ink-50:  #EDEBE6;
+
+  /* Backgrounds */
+  --bg-page:     #F5F4F0;
+  --bg-raised:   #FAF9F7;
+  --bg-surface:  #FFFFFF;
+  --bg-recessed: #EDEAE3;
+
+  /* Semantic */
+  --red-700:   #B71C1C; --red-50:   #FEE8E8;
+  --amber-700: #B45309; --amber-50: #FEF3C7;
+  --blue-700:  #1D4ED8; --blue-50:  #EFF6FF;
+
+  /* Spacing (4px base) */
+  --space-1: 4px;  --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
+  --space-5: 20px; --space-6: 24px;  --space-8: 32px;  --space-10: 40px;
+  --space-12: 48px; --space-16: 64px; --space-20: 80px; --space-24: 96px;
+
+  /* Radius */
+  --radius-xs:3px; --radius-sm:5px; --radius-md:8px;
+  --radius-lg:12px; --radius-xl:16px; --radius-full:9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(28,26,23,0.06);
+  --shadow-sm: 0 1px 3px rgba(28,26,23,0.08),0 1px 2px rgba(28,26,23,0.04);
+  --shadow-md: 0 4px 8px rgba(28,26,23,0.07),0 2px 4px rgba(28,26,23,0.04);
+  --shadow-lg: 0 12px 28px rgba(28,26,23,0.09),0 4px 8px rgba(28,26,23,0.05);
+
+  /* Borders */
+  --border-subtle:  1px solid var(--ink-50);
+  --border-default: 1px solid var(--ink-100);
+  --border-strong:  1px solid var(--ink-200);
+
+  /* Typography */
+  --font-serif: 'Lora', Georgia, serif;
+  --font-sans:  'Inter', system-ui, sans-serif;
+
+  /* Layout */
+  --sidebar-width: 220px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-page);
+  color: var(--ink-900);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,24 @@
+/* src/layouts/AppLayout.css */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-main {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  position: relative;
+}
+
+.app-content {
+  margin: 0 auto;
+}
+
+.app-main--full {
+  padding: 0;
+}
+
+.app-content--full {
+  max-width: none;
+  margin: 0;
+}

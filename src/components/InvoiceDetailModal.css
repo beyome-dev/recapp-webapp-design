@@ -1,0 +1,301 @@
+/* src/components/InvoiceDetailModal.css */
+.idm-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 26, 23, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.idm-panel {
+  background: var(--bg-raised);
+  border-radius: var(--radius-xl);
+  width: 620px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18);
+}
+
+.idm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: var(--border-default);
+  flex-shrink: 0;
+}
+
+.idm-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.idm-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-900);
+  font-variant-numeric: tabular-nums;
+}
+
+.idm-close {
+  background: none;
+  border: none;
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--ink-500);
+  display: flex;
+  align-items: center;
+}
+
+.idm-close:hover { background: var(--ink-50); color: var(--ink-900); }
+
+.idm-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 9px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.idm-pill-green   { background: var(--green-50);    color: var(--green-700); }
+.idm-pill-amber   { background: var(--amber-50);    color: var(--amber-700); }
+.idm-pill-neutral { background: var(--bg-recessed); color: var(--ink-500);   }
+.idm-pill-slate   { background: var(--ink-100);     color: var(--ink-700);   }
+
+.idm-body {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow-y: auto;
+}
+
+.idm-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 12px;
+}
+
+.idm-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-300);
+  margin-bottom: 4px;
+}
+
+.idm-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink-900);
+}
+
+.idm-avatar {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Line items table */
+.idm-line-table {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--bg-page);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.idm-line-head, .idm-line-row, .idm-line-total {
+  display: grid;
+  grid-template-columns: 1fr 60px 100px 120px;
+  gap: 8px;
+  padding: 10px 12px;
+  font-size: 12px;
+}
+
+.idm-line-head {
+  background: var(--bg-recessed);
+  font-weight: 600;
+  color: var(--ink-500);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+}
+
+.idm-line-row {
+  background: var(--bg-surface);
+  color: var(--ink-900);
+  align-items: center;
+}
+
+.idm-line-meta { color: var(--ink-500); }
+
+.idm-r { text-align: right; font-variant-numeric: tabular-nums; }
+
+.idm-line-total {
+  background: var(--bg-recessed);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink-900);
+}
+
+.idm-line-total span:first-child { grid-column: 1 / 4; }
+.idm-line-total span:last-child  { text-align: right; font-variant-numeric: tabular-nums; }
+
+.idm-notes {
+  font-size: 13px;
+  color: var(--ink-700);
+  background: var(--bg-page);
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.idm-payment-card {
+  padding: 10px 12px;
+  background: var(--green-50);
+  border-radius: var(--radius-md);
+}
+
+.idm-payment-card .idm-label { color: var(--green-700); }
+
+.idm-payment-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--green-700);
+  font-weight: 500;
+}
+
+/* Pay form */
+.idm-pay-form {
+  padding: 12px;
+  background: var(--bg-page);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.idm-method-row {
+  display: flex;
+  gap: 6px;
+}
+
+.idm-method {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px;
+  background: var(--bg-surface);
+  border: var(--border-default);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-700);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.idm-method:hover { background: var(--ink-50); }
+
+.idm-method.selected {
+  background: var(--green-700);
+  border-color: var(--green-700);
+  color: white;
+}
+
+.idm-input {
+  padding: 8px 10px;
+  background: var(--bg-surface);
+  border: var(--border-default);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink-900);
+  outline: none;
+  font-family: inherit;
+}
+
+.idm-input:focus { border-color: var(--green-700); }
+
+.idm-pay-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.idm-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: var(--border-subtle);
+  padding: 12px 18px;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.idm-footer-right {
+  display: flex;
+  gap: 6px;
+}
+
+.idm-primary, .idm-secondary, .idm-danger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  border: var(--border-default);
+}
+
+.idm-primary {
+  background: var(--green-700);
+  color: white;
+  border-color: var(--green-700);
+}
+
+.idm-primary:hover { background: var(--green-900); }
+
+.idm-secondary {
+  background: var(--bg-surface);
+  color: var(--ink-700);
+}
+
+.idm-secondary:hover { background: var(--ink-50); color: var(--ink-900); }
+
+.idm-danger {
+  background: var(--bg-surface);
+  color: var(--red-700, #b91c1c);
+  border-color: var(--border-default);
+}
+
+.idm-danger:hover {
+  background: var(--red-50, #fef2f2);
+}

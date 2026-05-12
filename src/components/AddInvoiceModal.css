@@ -1,0 +1,273 @@
+/* src/components/AddInvoiceModal.css */
+.aim-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 26, 23, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aim-panel {
+  background: var(--bg-raised);
+  border-radius: var(--radius-xl);
+  width: 560px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18);
+}
+
+.aim-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: var(--border-default);
+  flex-shrink: 0;
+}
+
+.aim-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aim-back, .aim-close {
+  background: none;
+  border: none;
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--ink-500);
+  display: flex;
+  align-items: center;
+}
+
+.aim-back:hover, .aim-close:hover {
+  background: var(--ink-50);
+  color: var(--ink-900);
+}
+
+.aim-title { font-size: 15px; font-weight: 600; color: var(--ink-900); }
+
+.aim-body {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+}
+
+.aim-sub { font-size: 12px; color: var(--ink-500); margin: 0; }
+
+.aim-client-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--bg-page);
+  border-radius: var(--radius-md);
+}
+
+.aim-client-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.aim-client-name { font-size: 13px; font-weight: 600; color: var(--ink-900); }
+.aim-client-meta { font-size: 11px; color: var(--ink-500); }
+
+.aim-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.aim-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.aim-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-300);
+}
+
+.aim-input, .aim-textarea {
+  padding: 7px 10px;
+  background: var(--bg-page);
+  border: var(--border-default);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink-900);
+  outline: none;
+  font-family: inherit;
+}
+
+.aim-input:focus, .aim-textarea:focus {
+  border-color: var(--green-700);
+  background: var(--bg-surface);
+}
+
+.aim-textarea { resize: vertical; min-height: 56px; }
+
+.aim-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--bg-page);
+  border-radius: var(--radius-md);
+  padding: 10px;
+}
+
+.aim-lines-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-700);
+}
+
+.aim-add-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: var(--bg-surface);
+  border: var(--border-default);
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-900);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.aim-add-line:hover { background: var(--ink-50); }
+
+.aim-line {
+  display: grid;
+  grid-template-columns: 1fr 70px 110px 30px;
+  gap: 6px;
+  align-items: center;
+}
+
+.aim-line-service, .aim-line-qty, .aim-line-price-input {
+  padding: 6px 8px;
+  background: var(--bg-surface);
+  border: var(--border-default);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: 12px;
+  color: var(--ink-900);
+  outline: none;
+  font-family: inherit;
+}
+
+.aim-line-service:focus, .aim-line-qty:focus, .aim-line-price-input:focus {
+  border-color: var(--green-700);
+}
+
+.aim-line-price {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg-surface);
+  border: var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 0 8px;
+}
+
+.aim-currency { color: var(--ink-500); font-size: 12px; }
+
+.aim-line-price-input {
+  border: none;
+  background: none;
+  padding: 6px 0;
+  width: 100%;
+}
+
+.aim-line-remove {
+  background: none;
+  border: none;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--ink-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aim-line-remove:hover:not(:disabled) {
+  background: var(--red-50, #fef2f2);
+  color: var(--red-700, #b91c1c);
+}
+
+.aim-line-remove:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.aim-total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 4px 2px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-900);
+}
+
+.aim-total-amount {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.aim-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  border-top: var(--border-subtle);
+  padding-top: 12px;
+}
+
+.aim-primary, .aim-secondary {
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  border: var(--border-default);
+}
+
+.aim-primary {
+  background: var(--green-700);
+  color: white;
+  border-color: var(--green-700);
+}
+
+.aim-primary:hover { background: var(--green-900); }
+
+.aim-secondary {
+  background: var(--bg-surface);
+  color: var(--ink-700);
+}
+
+.aim-secondary:hover { background: var(--ink-50); color: var(--ink-900); }

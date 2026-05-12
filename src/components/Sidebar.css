@@ -1,0 +1,210 @@
+/* src/components/Sidebar.css */
+.sidebar {
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+  background: var(--bg-raised);
+  border-right: var(--border-default);
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 16px 16px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink-900);
+  border-bottom: var(--border-default);
+}
+
+.logo-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--green-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green-500);
+  flex-shrink: 0;
+}
+
+.sidebar-search {
+  margin: 12px 12px 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--bg-surface);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  color: var(--ink-500);
+  font-size: 13px;
+}
+
+.sidebar-search-shortcut {
+  margin-left: auto;
+  font-size: 11px;
+  background: var(--bg-page);
+  border: var(--border-default);
+  border-radius: var(--radius-xs);
+  padding: 1px 5px;
+  color: var(--ink-500);
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 8px 0;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-500);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  margin: 1px 8px;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav-item:hover { background: var(--ink-100); color: var(--ink-900); }
+.nav-item.active { background: var(--green-50); color: var(--green-700); }
+
+.sidebar-bottom {
+  border-top: var(--border-default);
+  padding: 12px;
+  position: relative;
+}
+
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 6px 8px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  transition: background 0.15s;
+}
+
+.sidebar-user:hover { background: var(--ink-50); }
+.sidebar-user.open { background: var(--ink-100); }
+
+.user-chevron {
+  color: var(--ink-300);
+  flex-shrink: 0;
+  transition: transform 0.15s;
+}
+
+.sidebar-user.open .user-chevron {
+  transform: rotate(90deg);
+  color: var(--ink-700);
+}
+
+.profile-menu {
+  position: absolute;
+  bottom: calc(100% - 4px);
+  left: 12px;
+  right: 12px;
+  background: var(--bg-raised);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  z-index: 20;
+}
+
+.profile-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-700);
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+  transition: background 0.12s, color 0.12s;
+}
+
+.profile-menu-item:hover {
+  background: var(--ink-50);
+  color: var(--ink-900);
+}
+
+.profile-menu-divider {
+  height: 1px;
+  background: var(--ink-100);
+  margin: 4px 2px;
+}
+
+.profile-menu-danger { color: var(--red-700, #b91c1c); }
+.profile-menu-danger:hover {
+  background: var(--red-50, #fef2f2);
+  color: var(--red-700, #b91c1c);
+}
+
+.user-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--green-100);
+  color: var(--green-700);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.user-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.user-email {
+  font-size: 12px;
+  color: var(--ink-700);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-role {
+  font-size: 11px;
+  color: var(--ink-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+

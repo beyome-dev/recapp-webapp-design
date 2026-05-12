@@ -1,0 +1,118 @@
+/* src/components/ClientSearchOrAdd.css */
+.csa-root {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.csa-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--bg-page);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  color: var(--ink-500);
+}
+
+.csa-search-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink-900);
+}
+
+.csa-search-input::placeholder { color: var(--ink-400); }
+
+.csa-no-client-msg {
+  font-size: 12px;
+  color: var(--ink-500);
+  margin: 4px 0 0;
+}
+
+.csa-add-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px dashed var(--ink-200);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.csa-add-option:hover {
+  background: var(--ink-50);
+  border-color: var(--ink-300);
+}
+
+.csa-add-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--green-50);
+  color: var(--green-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.csa-add-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-900);
+}
+
+.csa-client-results {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.csa-client-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.csa-client-row:hover { background: var(--ink-50); }
+
+.csa-client-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.csa-client-info { flex: 1; min-width: 0; }
+
+.csa-client-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-900);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.csa-client-meta {
+  font-size: 11px;
+  color: var(--ink-500);
+}

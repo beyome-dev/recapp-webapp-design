@@ -1,0 +1,344 @@
+/* src/components/NewSessionModal.css */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(28,26,23,0.45);
+  backdrop-filter: blur(2px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nsm-panel {
+  background: var(--bg-surface);
+  border-radius: var(--radius-xl);
+  width: 460px;
+  max-width: calc(100vw - 32px);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.nsm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5) var(--space-6);
+  border-bottom: var(--border-subtle);
+}
+
+
+.nsm-close {
+  background: none;
+  border: none;
+  color: var(--ink-500);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.nsm-body {
+  padding: var(--space-6);
+}
+
+.nsm-title {
+  font-family: Lora, serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink-900);
+  margin-bottom: var(--space-1);
+}
+
+.nsm-sub {
+  font-size: 13px;
+  color: var(--ink-500);
+  margin-bottom: var(--space-5);
+}
+
+.nsm-search-wrap {
+  position: relative;
+  margin-bottom: var(--space-3);
+}
+
+.nsm-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-300);
+}
+
+.nsm-search {
+  width: 100%;
+  padding: 9px 12px 9px 36px;
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--ink-900);
+  outline: none;
+}
+
+.nsm-search:focus {
+  border-color: var(--green-500);
+  box-shadow: 0 0 0 3px rgba(62,140,98,0.12);
+}
+
+.nsm-client-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.nsm-client-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 13px;
+  color: var(--ink-700);
+}
+
+.nsm-client-row:hover {
+  background: var(--bg-page);
+}
+
+.nsm-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: white;
+  flex-shrink: 0;
+}
+
+.nsm-add-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  color: var(--ink-500);
+  background: none;
+  border: 1.5px dashed var(--ink-100);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  cursor: pointer;
+  margin-top: var(--space-2);
+}
+
+.nsm-add-row:hover {
+  color: var(--green-700);
+  border-color: var(--green-300);
+}
+
+.nsm-add-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.nsm-field {
+  margin-bottom: var(--space-4);
+}
+
+.nsm-field-row {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.nsm-field-row .nsm-field {
+  flex: 1;
+}
+
+.nsm-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-500);
+  margin-bottom: var(--space-2);
+}
+
+.nsm-input {
+  width: 100%;
+  padding: 9px 12px;
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--ink-900);
+  outline: none;
+  background: var(--bg-surface);
+}
+
+.nsm-input:focus {
+  border-color: var(--green-500);
+  box-shadow: 0 0 0 3px rgba(62,140,98,0.12);
+}
+
+
+.nsm-primary-btn {
+  width: 100%;
+  padding: 11px;
+  background: var(--green-700);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: var(--space-2);
+}
+
+.nsm-primary-btn:hover {
+  background: var(--green-900);
+}
+
+.nsm-add-confirm {
+  padding: 9px 16px;
+  background: var(--green-700);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.nsm-add-confirm:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+
+/* Progress bar (replaces dot steps) */
+.nsm-progress-bar {
+  display: flex;
+  gap: 6px;
+  padding: 12px 20px 0;
+}
+
+.nsm-progress-segment {
+  height: 3px;
+  flex: 1;
+  border-radius: 99px;
+  background: var(--ink-100);
+  transition: background 0.2s;
+}
+
+.nsm-progress-segment.done {
+  background: var(--green-700);
+}
+
+/* Segmented session type control */
+.nsm-segment-wrap {
+  display: flex;
+  background: var(--bg-page);
+  border-radius: var(--radius-md);
+  padding: 3px;
+  gap: 2px;
+}
+
+.nsm-segment-btn {
+  flex: 1;
+  text-align: center;
+  padding: 6px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-500);
+  background: none;
+  border: none;
+  border-radius: calc(var(--radius-md) - 2px);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+}
+
+.nsm-segment-btn.selected {
+  background: var(--bg-surface);
+  color: var(--ink-900);
+  font-weight: 500;
+  box-shadow: var(--shadow-xs);
+}
+
+/* Time field hint */
+.nsm-field-hint {
+  font-size: 11px;
+  color: var(--ink-300);
+  margin-top: var(--space-1);
+}
+
+/* Radio consent cards */
+.nsm-radio-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.nsm-radio-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.nsm-radio-card-yes {
+  border: 2px solid var(--green-700);
+  background: var(--green-50);
+}
+
+.nsm-radio-card-no {
+  border: 1.5px solid var(--ink-100);
+  background: var(--bg-surface);
+}
+
+.nsm-radio-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nsm-radio-dot-filled {
+  border: 2px solid var(--green-700);
+  background: var(--green-700);
+}
+
+.nsm-radio-dot-empty {
+  border: 2px solid var(--ink-100);
+  background: var(--bg-surface);
+}
+
+.nsm-radio-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-900);
+}
+
+.nsm-radio-card-sub {
+  font-size: 12px;
+  color: var(--ink-500);
+  margin-top: 2px;
+}
+
+.nsm-radio-card-yes .nsm-radio-card-title { color: var(--green-900); }
+.nsm-radio-card-yes .nsm-radio-card-sub   { color: var(--green-700); }

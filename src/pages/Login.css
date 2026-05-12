@@ -1,0 +1,160 @@
+/* ── Login page layout ── */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+}
+
+/* ── Logo ── */
+.logo-lockup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--green-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-mark svg { color: var(--green-700); }
+
+.logo-name {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink-900);
+  letter-spacing: -0.015em;
+}
+
+/* ── Card ── */
+.login-page .card {
+  background: var(--bg-surface);
+  border: var(--border-default);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-10) var(--space-10);
+  width: 100%;
+  max-width: 420px;
+}
+
+.card-title {
+  font-family: var(--font-serif);
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--ink-900);
+  margin-bottom: var(--space-1);
+}
+
+.card-subtitle {
+  font-size: 14px;
+  color: var(--ink-500);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+}
+
+/* ── Form ── */
+.field { margin-bottom: var(--space-4); }
+
+.login-page label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-700);
+  margin-bottom: var(--space-1);
+}
+
+.login-page input[type="email"],
+.login-page input[type="password"] {
+  font-family: inherit;
+  width: 100%;
+  font-size: 14px;
+  color: var(--ink-900);
+  background: var(--bg-surface);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 10px 13px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.login-page input[type="email"]:focus,
+.login-page input[type="password"]:focus {
+  border-color: var(--green-500);
+  box-shadow: 0 0 0 3px rgba(62, 140, 98, 0.12);
+}
+
+.login-page input::placeholder { color: var(--ink-300); }
+
+.login-page input.input-error {
+  border-color: var(--red-700);
+  box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.10);
+}
+
+.login-page input.input-error:focus {
+  border-color: var(--red-700);
+  box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.10);
+}
+
+/* ── Error banner ── */
+.error-msg {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--red-50);
+  border: 1px solid rgba(183, 28, 28, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--red-700);
+  font-size: 13px;
+  padding: 10px 13px;
+  margin-bottom: var(--space-4);
+}
+
+/* ── Button ── */
+.btn-primary {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--bg-surface);
+  background: var(--green-700);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 12px;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-top: var(--space-1);
+}
+
+.btn-primary:hover { background: var(--green-900); }
+
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(62, 140, 98, 0.12);
+}
+
+/* ── Card footer ── */
+.card-footer {
+  text-align: center;
+  margin-top: var(--space-6);
+  font-size: 13px;
+  color: var(--ink-500);
+}
+
+.card-footer a {
+  color: var(--green-700);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.card-footer a:hover { text-decoration: underline; }

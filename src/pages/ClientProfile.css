@@ -1,0 +1,502 @@
+/* src/pages/ClientProfile.css */
+.cprofile-page {
+  padding: var(--space-8) var(--space-8) var(--space-20);
+}
+
+/* Back link */
+.cprofile-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-500);
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: var(--space-3);
+}
+
+.cprofile-back:hover { color: var(--ink-900); }
+
+.cprofile-empty {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--ink-500);
+}
+
+/* Header */
+.cprofile-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-5);
+}
+
+.cprofile-identity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.cprofile-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  flex-shrink: 0;
+}
+
+.cprofile-name {
+  font-family: Lora, serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--ink-900);
+  letter-spacing: -0.01em;
+  margin: 0 0 4px;
+}
+
+.cprofile-meta {
+  font-size: 12px;
+  color: var(--ink-500);
+}
+
+/* Header controls */
+.cprofile-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* At Risk toggle */
+.atrisk-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  user-select: none;
+  background: var(--bg-surface);
+}
+
+.atrisk-toggle input { display: none; }
+
+.atrisk-track {
+  width: 28px;
+  height: 16px;
+  background: var(--ink-200);
+  border-radius: 16px;
+  position: relative;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.atrisk-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.15s;
+}
+
+.atrisk-toggle input:checked + .atrisk-track {
+  background: var(--red-700, #b91c1c);
+}
+
+.atrisk-toggle input:checked + .atrisk-track .atrisk-thumb {
+  transform: translateX(12px);
+}
+
+.atrisk-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-700);
+}
+
+.atrisk-toggle input:checked ~ .atrisk-label { color: var(--red-700, #b91c1c); }
+
+/* Actions menu */
+.actions-wrap {
+  position: relative;
+}
+
+.btn-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: var(--bg-surface);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-900);
+  cursor: pointer;
+}
+
+.btn-actions:hover { background: var(--ink-50); }
+
+.actions-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: var(--bg-raised);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 4px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  z-index: 20;
+}
+
+.actions-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: none;
+  background: none;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-700);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.12s, color 0.12s;
+}
+
+.actions-item:hover { background: var(--ink-50); color: var(--ink-900); }
+
+.actions-divider {
+  height: 1px;
+  background: var(--ink-100);
+  margin: 4px 2px;
+}
+
+.actions-danger { color: var(--red-700, #b91c1c); }
+.actions-danger:hover {
+  background: var(--red-50, #fef2f2);
+  color: var(--red-700, #b91c1c);
+}
+
+/* New session button */
+.btn-new-session-on-profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--green-700);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-new-session-on-profile:hover { background: var(--green-900); }
+
+/* Tabs */
+.cprofile-tabs {
+  display: flex;
+  gap: 2px;
+  border-bottom: var(--border-default);
+  margin-bottom: var(--space-5);
+  overflow-x: auto;
+}
+
+.cprofile-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-500);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.cprofile-tab:hover { color: var(--ink-900); }
+
+.cprofile-tab.active {
+  color: var(--green-700);
+  border-bottom-color: var(--green-700);
+}
+
+/* Tab body grid */
+.ctab-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.ctab-card {
+  background: var(--bg-surface);
+  border: var(--border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ctab-card-wide { grid-column: 1 / -1; }
+
+.ctab-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.ctab-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-900);
+  margin: 0;
+}
+
+.ctab-card-hint {
+  font-size: 11px;
+  color: var(--ink-500);
+}
+
+.ctab-edit, .ctab-cancel, .ctab-save {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: var(--border-default);
+  background: var(--bg-surface);
+  color: var(--ink-700);
+  font-family: inherit;
+}
+
+.ctab-edit:hover, .ctab-cancel:hover { background: var(--ink-50); color: var(--ink-900); }
+
+.ctab-save {
+  background: var(--green-700);
+  color: white;
+  border-color: var(--green-700);
+}
+
+.ctab-save:hover { background: var(--green-900); }
+
+.ctab-edit-actions {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.ctab-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.ctab-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.ctab-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-300);
+}
+
+.ctab-required { color: var(--red-700, #b91c1c); }
+
+.ctab-value {
+  font-size: 13px;
+  color: var(--ink-900);
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.ctab-input {
+  width: 100%;
+  padding: 7px 10px;
+  background: var(--bg-page);
+  border: var(--border-default);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink-900);
+  outline: none;
+  transition: border-color 0.12s, background 0.12s;
+}
+
+.ctab-input:focus {
+  border-color: var(--green-700);
+  background: var(--bg-surface);
+}
+
+/* Consent rows */
+.consent-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--bg-page);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.consent-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 12px 14px;
+  background: var(--bg-surface);
+}
+
+.consent-row-stub { background: var(--bg-page); opacity: 0.85; }
+
+.consent-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.consent-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--green-50);
+  color: var(--green-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.consent-row-stub .consent-icon {
+  background: var(--ink-100);
+  color: var(--ink-500);
+}
+
+.consent-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-900);
+}
+
+.consent-meta {
+  font-size: 11px;
+  color: var(--ink-500);
+}
+
+.consent-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.consent-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--green-50);
+  color: var(--green-700);
+}
+
+.ctab-btn-secondary, .ctab-btn-tertiary {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: inherit;
+  border: var(--border-default);
+  background: var(--bg-surface);
+  color: var(--ink-900);
+}
+
+.ctab-btn-secondary { background: var(--green-700); color: white; border-color: var(--green-700); }
+.ctab-btn-secondary:hover { background: var(--green-900); }
+.ctab-btn-secondary:disabled { background: var(--ink-200); border-color: var(--ink-200); cursor: not-allowed; }
+
+.ctab-btn-tertiary:hover { background: var(--ink-50); }
+.ctab-btn-tertiary:disabled { color: var(--ink-300); cursor: not-allowed; }
+
+/* Stub tabs */
+.ctab-stub { gap: var(--space-3); }
+
+.ctab-stub-blurb {
+  font-size: 13px;
+  color: var(--ink-500);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Toast */
+.cprofile-toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 18px;
+  background: var(--ink-900);
+  color: white;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  z-index: 100;
+  animation: cprofile-toast-in 0.2s ease-out;
+}
+
+@keyframes cprofile-toast-in {
+  from { opacity: 0; transform: translate(-50%, 8px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@media (max-width: 900px) {
+  .ctab-grid { grid-template-columns: 1fr; }
+  .ctab-fields { grid-template-columns: 1fr; }
+}

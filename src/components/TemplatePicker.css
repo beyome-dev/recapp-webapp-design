@@ -1,0 +1,158 @@
+/* src/components/TemplatePicker.css */
+.tp-panel {
+  display: flex;
+  background: var(--bg-surface);
+  border-radius: var(--radius-xl);
+  width: 620px;
+  max-width: calc(100vw - 32px);
+  max-height: 85vh;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+.tp-sidebar {
+  width: 190px;
+  flex-shrink: 0;
+  border-right: var(--border-subtle);
+  padding: var(--space-5) var(--space-3);
+  overflow-y: auto;
+}
+
+.tp-sidebar-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-300);
+  padding: 0 var(--space-2) var(--space-3);
+}
+
+.tp-template-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: var(--ink-700);
+  cursor: pointer;
+  text-align: left;
+}
+
+.tp-template-row:hover { background: var(--bg-page); }
+
+.tp-template-row.active {
+  background: var(--green-50);
+  color: var(--green-700);
+  font-weight: 500;
+}
+
+.tp-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tp-dot-dashed {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--ink-300);
+  flex-shrink: 0;
+}
+
+.tp-custom-row { color: var(--ink-300); }
+
+.tp-preview {
+  flex: 1;
+  padding: var(--space-6);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.tp-close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  background: none;
+  border: none;
+  color: var(--ink-300);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.tp-preview-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink-900);
+}
+
+.tp-preview-desc {
+  font-size: 13px;
+  color: var(--ink-500);
+  line-height: 1.6;
+}
+
+.tp-sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.tp-section-card {
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-page);
+  border-radius: var(--radius-md);
+}
+
+.tp-section-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-700);
+  margin-bottom: 3px;
+}
+
+.tp-section-hint {
+  font-size: 12px;
+  color: var(--ink-300);
+}
+
+.tp-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: var(--border-subtle);
+}
+
+.tp-cancel {
+  padding: 8px 16px;
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  font-size: 13px;
+  color: var(--ink-700);
+  cursor: pointer;
+}
+
+.tp-apply {
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--green-700);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tp-apply:hover { background: var(--green-900); }

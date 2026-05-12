@@ -1,0 +1,220 @@
+/* src/pages/SessionsList.css */
+.sessions-list-page {
+  padding: var(--space-8) var(--space-8) var(--space-20);
+}
+
+.sessions-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+.sessions-title {
+  font-family: Lora, serif;
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--ink-900);
+  letter-spacing: -0.015em;
+  margin-bottom: var(--space-1);
+}
+
+.sessions-subtitle {
+  font-size: 13px;
+  color: var(--ink-500);
+}
+
+.btn-new-session {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 10px var(--space-5);
+  background: var(--green-700);
+  color: white;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+}
+
+.btn-new-session:hover {
+  background: var(--green-900);
+}
+
+/* ── Filter tabs ── */
+.sessions-filters {
+  display: flex;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+}
+
+.filter-tab {
+  padding: 5px 14px;
+  border-radius: var(--radius-md);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: var(--border-default);
+  background: var(--bg-surface);
+  color: var(--ink-500);
+}
+
+.filter-tab.active {
+  background: var(--green-700);
+  color: white;
+  border-color: var(--green-700);
+}
+
+/* ── Table shell ── */
+.sessions-table-wrap {
+  background: var(--bg-surface);
+  border: var(--border-default);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+/* ── Column grid ── */
+.sessions-col-grid {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) 140px 110px 160px 95px 110px;
+  column-gap: var(--space-4);
+  align-items: center;
+}
+
+/* ── Header row ── */
+.sessions-thead {
+  border-bottom: var(--border-subtle);
+}
+
+.sessions-thead .sessions-col-grid {
+  padding: 8px 16px;
+}
+
+.sessions-th {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-300);
+}
+
+.sessions-th-right {
+  text-align: right;
+}
+
+/* ── Body rows ── */
+.sessions-row {
+  border-bottom: var(--border-subtle);
+  border-left: 3px solid transparent;
+}
+
+.sessions-row:last-child {
+  border-bottom: none;
+}
+
+.sessions-row.row-in-progress {
+  border-left-color: var(--green-700);
+}
+
+.sessions-row.row-paused {
+  border-left-color: var(--amber-700);
+}
+
+.sessions-row.row-clickable {
+  cursor: pointer;
+}
+
+.sessions-row.row-clickable:hover {
+  background: var(--bg-page);
+}
+
+.sessions-row .sessions-col-grid {
+  padding: 13px 16px;
+}
+
+/* ── Client cell ── */
+.client-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.client-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+  flex-shrink: 0;
+}
+
+.client-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-900);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+/* ── Other cells ── */
+.cell-date {
+  font-size: 13px;
+  color: var(--ink-700);
+}
+
+.type-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink-700);
+}
+
+.cell-service {
+  font-size: 13px;
+  color: var(--ink-700);
+}
+
+.cell-sessnum {
+  font-size: 13px;
+  color: var(--ink-500);
+}
+
+.cell-status {
+  text-align: right;
+}
+
+/* ── Status badges ── */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.badge-blue    { background: var(--blue-50);     color: var(--blue-700);  }
+.badge-green   { background: var(--green-50);    color: var(--green-700); }
+.badge-amber   { background: var(--amber-50);    color: var(--amber-700); }
+.badge-neutral { background: var(--bg-recessed); color: var(--ink-500);   }
+
+.active-dot {
+  fill: var(--green-700);
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+

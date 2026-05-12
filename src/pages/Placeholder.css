@@ -1,0 +1,21 @@
+/* src/pages/Placeholder.css */
+.placeholder-page .page-header {
+  margin-bottom: var(--space-8);
+}
+
+.placeholder-page .page-title {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--ink-900);
+}
+
+.placeholder-page .placeholder-body {
+  padding: var(--space-12) 0;
+}
+
+.placeholder-page .placeholder-text {
+  font-size: 14px;
+  color: var(--ink-300);
+}
