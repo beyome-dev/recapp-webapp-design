@@ -53,6 +53,18 @@ export default function SessionNotes() {
   const [showMyNotes, setShowMyNotes]         = useState(false)
   const [showFinalizeWarning, setShowFinalizeWarning] = useState(false)
 
+  useEffect(() => {
+    if (!session) return
+    const done = (session.pse.completed || session.pse.skipped)
+              && session.noteLocked
+              && session.billing.outstanding === 0
+    if (done && session.status !== 'finalized') {
+      updateSession(id, { status: 'finalized' })
+    } else if (!done && session.status === 'finalized') {
+      updateSession(id, { status: 'completed' })
+    }
+  }, [session, id]) // updateSession depends only on setSessions (stable) — safe to omit
+
   if (!session) return <div className="sn-not-found">Session not found.</div>
 
   const TypeIcon = TYPE_ICON[session.type] ?? Video
@@ -100,14 +112,6 @@ export default function SessionNotes() {
   const allDone = (session.pse.completed || session.pse.skipped)
                && session.noteLocked
                && session.billing.outstanding === 0
-
-  useEffect(() => {
-    if (allDone && session.status !== 'finalized') {
-      updateSession(id, { status: 'finalized' })
-    } else if (!allDone && session.status === 'finalized') {
-      updateSession(id, { status: 'completed' })
-    }
-  }, [allDone, id, session.status]) // updateSession depends only on setSessions (stable)
 
   return (
     <div className="sn-page">

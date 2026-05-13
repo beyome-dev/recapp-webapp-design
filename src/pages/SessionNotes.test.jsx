@@ -150,4 +150,12 @@ describe('<SessionNotes> finalize button auto-transition', () => {
     await completeAllTasks()
     expect(screen.queryByRole('button', { name: 'Finalize Session' })).not.toBeInTheDocument()
   })
+
+  it('shows "Finalize Session" for a session with tasks still pending', () => {
+    renderSessionPage('sess-2')
+    // sess-2: PSE skipped (acceptable), note not locked, billing outstanding 5000
+    // allDone is false → button must be active
+    expect(screen.getByRole('button', { name: 'Finalize Session' })).not.toBeDisabled()
+    expect(screen.queryByRole('button', { name: 'Session Finalized' })).not.toBeInTheDocument()
+  })
 })
