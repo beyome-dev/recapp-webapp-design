@@ -85,19 +85,21 @@
 
 /* ── Header row ── */
 .sessions-thead {
-  border-bottom: var(--border-subtle);
+  background: var(--bg-recessed);
+  border-top: var(--border-default);
+  border-bottom: var(--border-default);
 }
 
 .sessions-thead .sessions-col-grid {
-  padding: 8px 16px;
+  padding: 9px 16px;
 }
 
 .sessions-th {
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ink-300);
+  letter-spacing: 0.07em;
+  color: var(--ink-500);
 }
 
 .sessions-th-right {
@@ -216,5 +218,10 @@
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.4; }
+}
+
+.sessions-empty {
+  padding: 48px 16px;
+  text-align: center;
 }
 

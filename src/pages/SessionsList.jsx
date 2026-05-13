@@ -6,6 +6,7 @@ import { useSessions } from '../context/SessionsContext'
 import { useClients } from '../context/ClientsContext'
 import NewSessionModal from '../components/NewSessionModal'
 import ConsentModal from '../components/ConsentModal'
+import sessionEmptyImg from '../assets/session_empty.png'
 import './SessionsList.css'
 
 const TYPE_ICON = {
@@ -136,6 +137,17 @@ export default function SessionsList() {
             <div className="sessions-th sessions-th-right">Status</div>
           </div>
         </div>
+
+        {visible.length === 0 && (
+          <div className="sessions-empty">
+            <img src={sessionEmptyImg} alt="" className="empty-img" />
+            <p className="empty-text">
+              {sessions.length === 0
+                ? 'No sessions yet. Create your first session to get started.'
+                : 'No sessions match the selected filter.'}
+            </p>
+          </div>
+        )}
 
         {visible.map(session => {
           const client    = getClient(session.clientId)

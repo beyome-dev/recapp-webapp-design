@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { Plus, Search, AlertTriangle, X, ChevronRight } from 'lucide-react'
 import { useClients } from '../context/ClientsContext'
 import ClientSearchOrAdd from '../components/ClientSearchOrAdd'
+import clientEmptyImg from '../assets/client_empty.png'
 import './Clients.css'
 
 const STATUS_FILTERS = ['All', 'Active', 'Inactive', 'Discharged']
@@ -116,7 +117,14 @@ export default function Clients() {
         </div>
 
         {visible.length === 0 && (
-          <div className="clients-empty">No clients match your search.</div>
+          <div className="clients-empty">
+            <img src={clientEmptyImg} alt="" className="empty-img" />
+            <p className="empty-text">
+              {clients.length === 0
+                ? 'No clients yet. Add your first client to get started.'
+                : 'No clients match your search or filter.'}
+            </p>
+          </div>
         )}
 
         {visible.map(client => {

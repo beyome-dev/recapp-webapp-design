@@ -13,7 +13,7 @@
 .idm-panel {
   background: var(--bg-raised);
   border-radius: var(--radius-xl);
-  width: 620px;
+  width: 900px;
   max-width: calc(100vw - 32px);
   max-height: calc(100vh - 64px);
   display: flex;

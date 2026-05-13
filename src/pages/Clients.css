@@ -96,15 +96,19 @@
   min-width: 880px;
 }
 
-.clients-thead { border-bottom: var(--border-subtle); }
-.clients-thead .clients-col-grid { padding: 8px 16px; }
+.clients-thead {
+  background: var(--bg-recessed);
+  border-top: var(--border-default);
+  border-bottom: var(--border-default);
+}
+.clients-thead .clients-col-grid { padding: 9px 16px; }
 
 .clients-th {
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ink-300);
+  letter-spacing: 0.07em;
+  color: var(--ink-500);
 }
 
 .clients-th-right { text-align: right; }
@@ -120,10 +124,8 @@
 .clients-row .clients-col-grid { padding: 13px 16px; }
 
 .clients-empty {
-  padding: 32px 16px;
+  padding: 48px 16px;
   text-align: center;
-  font-size: 13px;
-  color: var(--ink-500);
 }
 
 /* Cells */

@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContext'
 import { useSessions } from '../context/SessionsContext'
 import { useClients } from '../context/ClientsContext'
 import ConsentModal from '../components/ConsentModal'
+import upcomingEmptyImg from '../assets/upcoming_empty.png'
 import './Home.css'
 
 const ROLE_CONTENT = {
@@ -194,9 +195,10 @@ function TherapistComingUp() {
           <span className="section-title">Coming up</span>
         </div>
         <div className="timeline-card">
-          <p style={{ padding: 'var(--space-6)', color: 'var(--ink-500)', fontSize: 13 }}>
-            No sessions scheduled.
-          </p>
+          <div className="empty-state">
+            <img src={upcomingEmptyImg} alt="" className="empty-img" />
+            <p className="empty-text">No sessions scheduled yet. Book your first session to get started.</p>
+          </div>
         </div>
       </>
     )
