@@ -1,11 +1,13 @@
 // src/pages/SessionNotes.jsx
 import { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { Video, MapPin, Phone, CheckCircle2, AlertTriangle, Circle, Clock, CalendarDays, Mic, PenLine } from 'lucide-react'
+import { Video, MapPin, Phone, CheckCircle2, AlertTriangle, Circle, Clock, CalendarDays, Mic, PenLine, Plus } from 'lucide-react'
 import { useSessions } from '../context/SessionsContext'
 import { useClients } from '../context/ClientsContext'
 import TemplatePicker from '../components/TemplatePicker'
 import PSEOverlay from '../components/PSEOverlay'
+import InvoiceDetailModal from '../components/InvoiceDetailModal'
+import AddInvoiceModal from '../components/AddInvoiceModal'
 import './SessionNotes.css'
 
 const TYPE_ICON  = { online: Video, 'in-person': MapPin, phone: Phone }
@@ -367,17 +369,30 @@ function TranscriptTab({ session, client }) {
 }
 
 function BillingTab({ session }) {
+  const [selectedInvoiceId, setSelectedInvoiceId] = useState(null)
+  const [showAddInvoice, setShowAddInvoice]       = useState(false)
+
   return (
     <div className="bl-tab">
-      <div className="bl-summary">
-        <div className="bl-total">₹{session.billing.total.toLocaleString('en-IN')}</div>
-        {session.billing.outstanding > 0 && (
-          <div className="bl-outstanding">₹{session.billing.outstanding.toLocaleString('en-IN')} outstanding</div>
-        )}
+      <div className="bl-summary-row">
+        <div className="bl-summary">
+          <div className="bl-total">₹{session.billing.total.toLocaleString('en-IN')}</div>
+          {session.billing.outstanding > 0 && (
+            <div className="bl-outstanding">₹{session.billing.outstanding.toLocaleString('en-IN')} outstanding</div>
+          )}
+        </div>
+        <button className="bl-btn-add" onClick={() => setShowAddInvoice(true)}>
+          <Plus size={12} /> Add Invoice
+        </button>
       </div>
+
       <div className="bl-invoices">
         {session.billing.invoices.map(inv => (
-          <div key={inv.id} className="bl-invoice-card">
+          <div
+            key={inv.id}
+            className="bl-invoice-card bl-clickable"
+            onClick={() => setSelectedInvoiceId(inv.id)}
+          >
             <div className="bl-inv-left">
               <div className="bl-inv-id">{inv.id}</div>
               <div className="bl-inv-service">{inv.service}</div>
@@ -392,6 +407,7 @@ function BillingTab({ session }) {
           </div>
         ))}
       </div>
+
       {session.billing.activity.length > 0 && (
         <div className="bl-activity">
           <div className="bl-act-title">Activity</div>
@@ -402,6 +418,20 @@ function BillingTab({ session }) {
             </div>
           ))}
         </div>
+      )}
+
+      {selectedInvoiceId && (
+        <InvoiceDetailModal
+          invoiceId={selectedInvoiceId}
+          onClose={() => setSelectedInvoiceId(null)}
+        />
+      )}
+
+      {showAddInvoice && (
+        <AddInvoiceModal
+          preselectedClientId={session.clientId}
+          onClose={() => setShowAddInvoice(false)}
+        />
       )}
     </div>
   )
