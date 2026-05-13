@@ -686,7 +686,7 @@
 }
 
 .bl-invoice-card.bl-clickable:hover {
-  background: #f5f4f2;
+  background: var(--bg-hover, #f5f4f2);
 }
 
 .bl-btn-add {
