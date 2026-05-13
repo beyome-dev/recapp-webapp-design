@@ -151,4 +151,20 @@ describe('<InvoiceDetailModal>', () => {
     await user.click(screen.getByLabelText('Close'))
     expect(onClose).toHaveBeenCalled()
   })
+
+  it('calls onInvoicePaid with invoiceId and total amount after cash payment', async () => {
+    const user = userEvent.setup()
+    const onInvoicePaid = vi.fn()
+    render(
+      <AllProviders>
+        <InvoiceDetailModal invoiceId="inv-003" onClose={vi.fn()} onInvoicePaid={onInvoicePaid} />
+      </AllProviders>
+    )
+    await user.click(screen.getByRole('button', { name: /Mark as paid/i }))
+    await user.click(screen.getByRole('button', { name: 'Cash' }))
+    await user.click(screen.getByRole('button', { name: 'Confirm payment' }))
+    // inv-003 is a sent invoice with one line item: 1 × ₹1,750
+    expect(onInvoicePaid).toHaveBeenCalledOnce()
+    expect(onInvoicePaid).toHaveBeenCalledWith('inv-003', 1750)
+  })
 })
