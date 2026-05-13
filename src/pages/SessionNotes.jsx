@@ -75,6 +75,29 @@ export default function SessionNotes() {
     }
   }
 
+  function handleInvoicePaid(invoiceId, amount) {
+    const now = new Date()
+    const day = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+    const timestamp = `${day}, ${fmtTime(now.getHours(), now.getMinutes())}`
+    updateSession(id, {
+      billing: {
+        ...session.billing,
+        outstanding: session.billing.outstanding - amount,
+        invoices: session.billing.invoices.map(inv =>
+          inv.id === invoiceId ? { ...inv, status: 'paid' } : inv
+        ),
+        activity: [
+          ...session.billing.activity,
+          {
+            id: `act-${Date.now()}`,
+            timestamp,
+            event: `Payment ₹${amount.toLocaleString('en-IN')} received for ${invoiceId}`,
+          },
+        ],
+      },
+    })
+  }
+
   const pseDone    = session.pse.completed
   const pseSkipped = !session.pse.completed && session.pse.skipped
   const noteLocked = session.noteLocked
@@ -144,7 +167,7 @@ export default function SessionNotes() {
               <TranscriptTab session={session} client={client} />
             )}
             {activeTab === 'Billing' && (
-              <BillingTab session={session} />
+              <BillingTab session={session} onInvoicePaid={handleInvoicePaid} />
             )}
           </div>
         </div>
@@ -368,7 +391,7 @@ function TranscriptTab({ session, client }) {
   )
 }
 
-function BillingTab({ session }) {
+function BillingTab({ session, onInvoicePaid }) {
   const [selectedInvoiceId, setSelectedInvoiceId] = useState(null)
   const [showAddInvoice, setShowAddInvoice]       = useState(false)
 
@@ -424,6 +447,7 @@ function BillingTab({ session }) {
         <InvoiceDetailModal
           invoiceId={selectedInvoiceId}
           onClose={() => setSelectedInvoiceId(null)}
+          onInvoicePaid={onInvoicePaid}
         />
       )}
 
