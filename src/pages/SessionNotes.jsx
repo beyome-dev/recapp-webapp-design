@@ -1,5 +1,5 @@
 // src/pages/SessionNotes.jsx
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Video, MapPin, Phone, CheckCircle2, AlertTriangle, Circle, Clock, CalendarDays, Mic, PenLine, Plus } from 'lucide-react'
 import { useSessions } from '../context/SessionsContext'
@@ -66,13 +66,7 @@ export default function SessionNotes() {
     if (!session.pse.completed && !session.pse.skipped) incomplete.push('PSE not completed')
     if (!session.noteLocked) incomplete.push('Note not locked')
     if (session.billing.outstanding > 0) incomplete.push('Billing pending')
-
-    if (incomplete.length > 0) {
-      setShowFinalizeWarning(incomplete)
-    } else {
-      updateSession(id, { status: 'finalized' })
-      navigate('/sessions')
-    }
+    if (incomplete.length > 0) setShowFinalizeWarning(incomplete)
   }
 
   function handleInvoicePaid(invoiceId, amount) {
@@ -102,6 +96,18 @@ export default function SessionNotes() {
   const pseSkipped = !session.pse.completed && session.pse.skipped
   const noteLocked = session.noteLocked
   const billingOk  = session.billing.outstanding === 0
+
+  const allDone = (session.pse.completed || session.pse.skipped)
+               && session.noteLocked
+               && session.billing.outstanding === 0
+
+  useEffect(() => {
+    if (allDone && session.status !== 'finalized') {
+      updateSession(id, { status: 'finalized' })
+    } else if (!allDone && session.status === 'finalized') {
+      updateSession(id, { status: 'completed' })
+    }
+  }, [allDone, id, session.status]) // updateSession depends only on setSessions (stable)
 
   return (
     <div className="sn-page">
@@ -176,8 +182,12 @@ export default function SessionNotes() {
           <div className="sn-wrap-section">
             <div className="sn-wrap-title">Session Wrap-Up</div>
 
-            <button className="sn-finalize-btn" onClick={handleFinalize}>
-              Finalize Session
+            <button
+              className={`sn-finalize-btn${allDone ? ' sn-finalize-btn--done' : ''}`}
+              onClick={!allDone ? handleFinalize : undefined}
+              disabled={allDone}
+            >
+              {allDone ? 'Session Finalized' : 'Finalize Session'}
             </button>
 
             {showFinalizeWarning && Array.isArray(showFinalizeWarning) && (

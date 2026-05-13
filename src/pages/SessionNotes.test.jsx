@@ -110,3 +110,44 @@ describe('<SessionNotes> billing tab', () => {
     expect(screen.queryByText('Billing pending')).not.toBeInTheDocument()
   })
 })
+
+describe('<SessionNotes> finalize button auto-transition', () => {
+  beforeEach(() => {
+    vi.spyOn(window, 'alert').mockImplementation(() => {})
+    vi.spyOn(window, 'confirm').mockImplementation(() => true)
+  })
+  afterEach(() => vi.restoreAllMocks())
+
+  async function completeAllTasks() {
+    renderSessionPage('sess-1')
+    const user = userEvent.setup()
+
+    // Task 1: lock the note (PSE is already completed in seed data)
+    await user.click(screen.getByRole('button', { name: 'Lock' }))
+
+    // Task 2: pay inv-002 to clear outstanding balance
+    await user.click(screen.getByRole('button', { name: 'Billing' }))
+    await user.click(screen.getByText('inv-002'))
+    await user.click(screen.getByRole('button', { name: /Mark as paid/i }))
+    await user.click(screen.getByRole('button', { name: 'Cash' }))
+    await user.click(screen.getByRole('button', { name: 'Confirm payment' }))
+
+    return user
+  }
+
+  it('shows "Finalize Session" button when tasks are incomplete', () => {
+    renderSessionPage('sess-1')
+    // note is unlocked and billing pending — button should be active
+    expect(screen.getByRole('button', { name: 'Finalize Session' })).not.toBeDisabled()
+  })
+
+  it('shows "Session Finalized" and disables button when all tasks complete', async () => {
+    await completeAllTasks()
+    expect(screen.getByRole('button', { name: 'Session Finalized' })).toBeDisabled()
+  })
+
+  it('hides "Finalize Session" once all tasks are complete', async () => {
+    await completeAllTasks()
+    expect(screen.queryByRole('button', { name: 'Finalize Session' })).not.toBeInTheDocument()
+  })
+})
