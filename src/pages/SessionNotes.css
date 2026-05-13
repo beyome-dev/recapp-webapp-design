@@ -222,6 +222,15 @@
 
 .sn-finalize-btn:hover { opacity: 0.9; }
 
+.sn-finalize-btn--done {
+  background: var(--green-50);
+  color: var(--green-700);
+  border: 1px solid var(--green-100);
+  cursor: default;
+  opacity: 1;
+}
+.sn-finalize-btn--done:hover { opacity: 1; }
+
 .sn-finalize-warning {
   display: flex;
   align-items: flex-start;
