@@ -6,16 +6,16 @@ import { AllProviders } from '../test/test-utils'
 import { useBilling } from '../context/BillingContext'
 import InvoiceDetailModal from './InvoiceDetailModal'
 
-function renderDetail(invoiceId, { onClose = vi.fn() } = {}) {
+function renderDetail(invoiceId, { onClose = vi.fn(), onInvoicePaid = vi.fn() } = {}) {
   const billingRef = { current: null }
   function Spy() { billingRef.current = useBilling(); return null }
   const utils = render(
     <AllProviders>
       <Spy />
-      <InvoiceDetailModal invoiceId={invoiceId} onClose={onClose} />
+      <InvoiceDetailModal invoiceId={invoiceId} onClose={onClose} onInvoicePaid={onInvoicePaid} />
     </AllProviders>
   )
-  return { ...utils, onClose, billingRef }
+  return { ...utils, onClose, billingRef, onInvoicePaid }
 }
 
 describe('<InvoiceDetailModal>', () => {
@@ -155,11 +155,7 @@ describe('<InvoiceDetailModal>', () => {
   it('calls onInvoicePaid with invoiceId and total amount after cash payment', async () => {
     const user = userEvent.setup()
     const onInvoicePaid = vi.fn()
-    render(
-      <AllProviders>
-        <InvoiceDetailModal invoiceId="inv-003" onClose={vi.fn()} onInvoicePaid={onInvoicePaid} />
-      </AllProviders>
-    )
+    renderDetail('inv-003', { onInvoicePaid })
     await user.click(screen.getByRole('button', { name: /Mark as paid/i }))
     await user.click(screen.getByRole('button', { name: 'Cash' }))
     await user.click(screen.getByRole('button', { name: 'Confirm payment' }))
