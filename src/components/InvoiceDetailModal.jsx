@@ -25,7 +25,7 @@ function fmt(d) {
   return dt.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })
 }
 
-export default function InvoiceDetailModal({ invoiceId, onClose }) {
+export default function InvoiceDetailModal({ invoiceId, onClose, onInvoicePaid = () => {} }) {
   const { getInvoice, markPaid, cancelInvoice, sendInvoice } = useBilling()
   const { getClient } = useClients()
   const invoice = getInvoice(invoiceId)
@@ -60,6 +60,7 @@ export default function InvoiceDetailModal({ invoiceId, onClose }) {
       return
     }
     markPaid(invoice.id, { method, txnId: txnId.trim() })
+    onInvoicePaid(invoice.id, total)
     setShowPay(false)
     setTxnId('')
   }

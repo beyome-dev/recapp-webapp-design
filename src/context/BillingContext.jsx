@@ -68,7 +68,7 @@ const SEED_INVOICES = [
   },
   {
     id: 'inv-003', code: 'INV-0003', clientId: 'c2',
-    lineItems: [mkLine('svc2')],
+    lineItems: [mkLine('svc1')],
     issueDate: '2026-05-06', dueDate: '2026-05-13',
     status: 'sent',
     payment: null,
