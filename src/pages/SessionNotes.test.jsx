@@ -82,4 +82,31 @@ describe('<SessionNotes> billing tab', () => {
     await user.click(screen.getByRole('button', { name: 'Close' }))
     expect(screen.queryByText('New Invoice')).not.toBeInTheDocument()
   })
+
+  async function payInvoice002() {
+    const user = await openBillingTab()
+    await user.click(screen.getByText('inv-002'))
+    await user.click(screen.getByRole('button', { name: /Mark as paid/i }))
+    await user.click(screen.getByRole('button', { name: 'Cash' }))
+    await user.click(screen.getByRole('button', { name: 'Confirm payment' }))
+    return user
+  }
+
+  it('invoice badge updates to paid after marking payment', async () => {
+    await payInvoice002()
+    // The inv-002 card should now show the paid badge
+    const badges = screen.getAllByText('paid')
+    expect(badges.length).toBe(2) // inv-001 was already paid; inv-002 now also paid
+  })
+
+  it('appends a payment activity entry after marking payment', async () => {
+    await payInvoice002()
+    expect(screen.getByText(/Payment ₹1,750 received for inv-002/)).toBeInTheDocument()
+  })
+
+  it('wrap-up billing item flips to Invoice added after full payment', async () => {
+    await payInvoice002()
+    expect(screen.getByText('Invoice added')).toBeInTheDocument()
+    expect(screen.queryByText('Billing pending')).not.toBeInTheDocument()
+  })
 })
